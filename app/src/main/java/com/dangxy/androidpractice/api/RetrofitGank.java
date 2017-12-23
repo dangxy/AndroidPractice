@@ -75,7 +75,7 @@ public class RetrofitGank {
                 request = request.newBuilder()
                         .cacheControl(CacheControl.FORCE_CACHE)
                         .build();
-                MLog.e("dang", "11111");
+                MLog.d("dang", "11111");
             }
 
             Response originalResponse = chain.proceed(request);
@@ -83,7 +83,7 @@ public class RetrofitGank {
             if (NetWorkUtils.isNetworkAvailable(AppApplication.getContext())) {
 
                 String cacheControl = request.cacheControl().toString();
-                MLog.e("dang", "22222");
+                MLog.d("dang", "22222");
 
                 // Add cache control header for response same as request's while network is available.
                 return originalResponse.newBuilder()
@@ -91,7 +91,7 @@ public class RetrofitGank {
                         .build();
             } else {
                 // Add cache control header for response to FORCE_CACHE while network is not available.
-                MLog.e("dang", "33333");
+                MLog.d("dang", "33333");
 
                 return originalResponse.newBuilder()
                         .header("Cache-Control", CacheControl.FORCE_CACHE.toString())
@@ -110,7 +110,7 @@ public class RetrofitGank {
             Request request = chain.request();
 
             long t1 = System.nanoTime();//请求发起的时间
-            MLog.e("DANG", String.format("发送请求 %s on %s%n%s",
+            MLog.d("DANG", String.format("发送请求 %s on %s%n%s",
                     request.url(), chain.connection(), request.headers()));
 
             Response response = chain.proceed(request);
@@ -122,7 +122,7 @@ public class RetrofitGank {
             //个新的response给应用层处理
             ResponseBody responseBody = response.peekBody(1024 * 1024);
 
-            MLog.e("DANG", String.format("接收响应: [%s] %n返回json:【%s】 %.1fms%n%s",
+            MLog.d("DANG", String.format("接收响应: [%s] %n返回json:【%s】 %.1fms%n%s",
                     response.request().url(),
                     responseBody.string(),
                     (t2 - t1) / 1e6d,

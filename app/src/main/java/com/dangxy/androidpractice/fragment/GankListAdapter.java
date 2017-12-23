@@ -58,4 +58,10 @@ public class GankListAdapter extends RecyclerView.Adapter<GankListAdapter.ViewHo
         }
     }
 
+    public void refresh(List<CommonEntity.ResultsBean> results) {
+        listEntities.clear();
+        listEntities.addAll(results);
+        notifyDataSetChanged();
+    }
+
 }

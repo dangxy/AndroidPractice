@@ -76,7 +76,6 @@ public class ShakeUtils implements SensorEventListener {
          */
         @Override
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
-            // TODO Auto-generated method stub
         }
 
         /*
@@ -86,7 +85,6 @@ public class ShakeUtils implements SensorEventListener {
          */
         @Override
         public void onSensorChanged(SensorEvent event) {
-            // TODO Auto-generated method stub
             // 现在检测时间
             long currentUpdateTime = System.currentTimeMillis();
             // 两次检测的时间间隔

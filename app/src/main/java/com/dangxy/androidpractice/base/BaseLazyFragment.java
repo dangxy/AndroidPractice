@@ -55,11 +55,11 @@ public abstract class BaseLazyFragment extends RxFragment implements IBaseView, 
             } else {
                 loadData();
                 mIsInited = true;
-                MLog.d("DANG", "第一次加载");
+                MLog.e("DANG", "第一次加载");
             }
 
         } else {
-            MLog.d("DANG", "不在加载");
+            MLog.e("DANG", "不在加载");
         }
     }
 
