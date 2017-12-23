@@ -31,7 +31,6 @@ public class GankActivity extends AppCompatActivity {
         vpGankList.setOffscreenPageLimit(6);
         vpGankList.setAdapter(readhubAdapter);
         tlGankList.setupWithViewPager(vpGankList);
-        tlGankList.setTabMode(TabLayout.MODE_FIXED);
         tlGankList.setTabsFromPagerAdapter(readhubAdapter);
     }
 }
