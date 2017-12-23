@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.dangxy.handlerdemo.R;
+import com.dangxy.androidpractice.R;
 
 import java.util.List;
 

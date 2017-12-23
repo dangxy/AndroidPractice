@@ -5,7 +5,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.telephony.TelephonyManager;
 
-import com.dangxy.handlerdemo.HandlerDemoApplication;
+import com.dangxy.androidpractice.AppApplication;
+
 
 /**
  * @author dangxueyi
@@ -85,6 +86,6 @@ public class NetWorkUtils {
         return netType;
     }
     private static NetworkInfo getActiveNetworkInfo() {
-        return ((ConnectivityManager) HandlerDemoApplication.getContext().getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
+        return ((ConnectivityManager) AppApplication.getContext().getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
     }
 }

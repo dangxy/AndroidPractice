@@ -2,10 +2,10 @@ package com.dangxy.androidpractice.api;
 
 import android.content.Context;
 
-import com.dangxy.handlerdemo.BuildConfig;
-import com.dangxy.handlerdemo.HandlerDemoApplication;
-import com.dangxy.handlerdemo.utils.MLog;
-import com.dangxy.handlerdemo.utils.NetWorkUtils;
+import com.dangxy.androidpractice.AppApplication;
+import com.dangxy.androidpractice.BuildConfig;
+import com.dangxy.androidpractice.utils.MLog;
+import com.dangxy.androidpractice.utils.NetWorkUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -82,7 +82,7 @@ public class RetrofitReadhub {
             Request request = chain.request();
 
             // Add FORCE_CACHE cache control for each request if network is not available.
-            if (!NetWorkUtils.isNetworkAvailable(HandlerDemoApplication.getContext())) {
+            if (!NetWorkUtils.isNetworkAvailable(AppApplication.getContext())) {
                 request = request.newBuilder()
                         .cacheControl(CacheControl.FORCE_CACHE)
                         .build();
@@ -91,7 +91,7 @@ public class RetrofitReadhub {
 
             Response originalResponse = chain.proceed(request);
 
-            if (NetWorkUtils.isNetworkAvailable(HandlerDemoApplication.getContext())) {
+            if (NetWorkUtils.isNetworkAvailable(AppApplication.getContext())) {
 
                 String cacheControl = request.cacheControl().toString();
                 MLog.e("dang", "22222");

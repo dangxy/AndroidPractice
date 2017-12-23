@@ -1,6 +1,7 @@
 package com.dangxy.androidpractice.api;
 
-import com.dangxy.handlerdemo.entity.RebaseUserEntity;
+
+import com.dangxy.androidpractice.entity.RebaseUserEntity;
 
 import retrofit2.Call;
 import retrofit2.http.Field;

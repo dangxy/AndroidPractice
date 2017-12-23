@@ -3,7 +3,7 @@ package com.dangxy.androidpractice.realm;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.dangxy.handlerdemo.R;
+import com.dangxy.androidpractice.R;
 
 import io.realm.Realm;
 import io.realm.RealmResults;

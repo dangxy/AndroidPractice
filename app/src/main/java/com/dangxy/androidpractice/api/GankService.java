@@ -1,6 +1,7 @@
 package com.dangxy.androidpractice.api;
 
-import com.dangxy.handlerdemo.entity.CommonEntity;
+
+import com.dangxy.androidpractice.entity.CommonEntity;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

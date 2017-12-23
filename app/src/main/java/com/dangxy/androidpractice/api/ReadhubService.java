@@ -1,7 +1,8 @@
 package com.dangxy.androidpractice.api;
 
-import com.dangxy.handlerdemo.entity.NewListEntity;
-import com.dangxy.handlerdemo.entity.TopicRsp;
+
+import com.dangxy.androidpractice.entity.NewListEntity;
+import com.dangxy.androidpractice.entity.TopicRsp;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
