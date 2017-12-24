@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.dangxy.androidpractice.mvp.GankFragment;
+import com.dangxy.androidpractice.mvp.GankNewFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +43,8 @@ public class GankAdapter extends FragmentPagerAdapter {
             fragmentTitles.add(s);
             ReadhubFragment rxReadhubFragment = new ReadhubFragment();
             GankFragment gankFragment = new GankFragment();
-            fragments.add(gankFragment);
+            GankNewFragment gankNewFragment = new GankNewFragment();
+            fragments.add(gankNewFragment);
         }
     }
 

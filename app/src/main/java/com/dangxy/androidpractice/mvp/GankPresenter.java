@@ -36,7 +36,7 @@ public class GankPresenter implements IBasePresenter {
 
     @Override
     public void getData() {
-        String pageSize = MathUtils.getRandomIntNum(35, 60) + "";
+        String pageSize = MathUtils.getRandomIntNum(5, 10) + "";
         String page = MathUtils.getRandomIntNum(1, 15) + "";
         rxGankService.getWelfareListData(pageSize, page)
                 .subscribeOn(Schedulers.io())

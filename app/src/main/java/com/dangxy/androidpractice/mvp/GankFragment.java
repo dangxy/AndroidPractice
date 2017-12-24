@@ -11,6 +11,7 @@ import com.dangxy.androidpractice.base.BaseLazyFragment;
 import com.dangxy.androidpractice.entity.CommonEntity;
 import com.dangxy.androidpractice.fragment.GankListAdapter;
 import com.dangxy.androidpractice.utils.LoadMoreDelegate;
+import com.dangxy.androidpractice.utils.MLog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -92,6 +93,7 @@ public class GankFragment extends BaseLazyFragment implements GankView, SwipeRef
 
     @Override
     public void onLoadMore() {
+        MLog.e("DANG", "加载更多");
         notifyLoadingStarted();
         gankPresenter.loadMoreData();
     }
@@ -103,11 +105,13 @@ public class GankFragment extends BaseLazyFragment implements GankView, SwipeRef
     }
 
     public void notifyLoadingStarted() {
+
         loadingCount.getAndIncrement();
     }
 
 
     public void notifyLoadingFinished() {
+
         loadingCount.decrementAndGet();
     }
 }
