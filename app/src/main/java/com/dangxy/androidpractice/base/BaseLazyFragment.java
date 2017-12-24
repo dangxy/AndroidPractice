@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.dangxy.androidpractice.R;
 import com.dangxy.androidpractice.utils.MLog;
@@ -55,11 +56,11 @@ public abstract class BaseLazyFragment extends RxFragment implements IBaseView, 
             } else {
                 loadData();
                 mIsInited = true;
-                MLog.e("DANG", "第一次加载");
+                MLog.d("DANG", "第一次加载");
             }
 
         } else {
-            MLog.e("DANG", "不在加载");
+            MLog.d("DANG", "不在加载");
         }
     }
 
@@ -124,6 +125,11 @@ public abstract class BaseLazyFragment extends RxFragment implements IBaseView, 
 
     @Override
     public void onRetry() {
-        loadData();
+        if (checkNetwork() == -1) {
+            Toast.makeText(mContext, "请检查网络", Toast.LENGTH_SHORT).show();
+        } else {
+            loadData();
+
+        }
     }
 }

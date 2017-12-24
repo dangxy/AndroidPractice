@@ -1,0 +1,64 @@
+package com.dangxy.androidpractice.base;
+
+import android.os.Bundle;
+import android.support.annotation.LayoutRes;
+import android.support.annotation.Nullable;
+
+import com.dangxy.androidpractice.R;
+import com.trello.rxlifecycle.LifecycleTransformer;
+import com.trello.rxlifecycle.components.RxActivity;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+/**
+ * @author dangxy99
+ * @description 描述
+ * @date 2017/12/24
+ */
+public abstract class BaseActivity<T extends IBasePresenter> extends RxActivity implements IBaseView {
+    @Nullable
+    @BindView(R.id.empty_layout)
+    protected EmptyLayout mEmptyLayout;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(attachLayoutRes());
+        ButterKnife.bind(this);
+        initView();
+    }
+
+    protected abstract void initView();
+
+    @LayoutRes
+    protected abstract int attachLayoutRes();
+
+    @Override
+    public void showLoading() {
+        if (mEmptyLayout != null) {
+            mEmptyLayout.setEmptyStatus(EmptyLayout.STATUS_LOADING);
+        }
+    }
+
+    @Override
+    public void hideLoading() {
+        if (mEmptyLayout != null) {
+            mEmptyLayout.hide();
+        }
+    }
+
+    @Override
+    public void showNetError(EmptyLayout.OnRetryListener onRetryListener) {
+        if (mEmptyLayout != null) {
+            mEmptyLayout.setEmptyStatus(EmptyLayout.STATUS_NO_NET);
+            mEmptyLayout.setRetryListener(onRetryListener);
+        }
+    }
+
+    @Override
+    public <T> LifecycleTransformer<T> bindToLife() {
+        return this.<T>bindToLifecycle();
+    }
+
+}

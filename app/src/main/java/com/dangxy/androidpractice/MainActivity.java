@@ -14,6 +14,7 @@ import android.widget.FrameLayout;
 
 import com.dangxy.androidpractice.fragment.GankActivity;
 import com.dangxy.androidpractice.fragment.ReadhubFragment;
+import com.dangxy.androidpractice.readhub.ReadHubActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     Button gank;
     @BindView(R.id.Readhub)
     Button Readhub;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,11 +80,13 @@ public class MainActivity extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.gank:
-                Intent intent = new Intent(this, GankActivity.class);
+                intent = new Intent(this, GankActivity.class);
                 startActivity(intent);
 
                 break;
             case R.id.Readhub:
+                intent = new Intent(this, ReadHubActivity.class);
+                startActivity(intent);
                 break;
             default:
                 break;

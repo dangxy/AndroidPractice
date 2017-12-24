@@ -66,6 +66,8 @@ public class RetrofitGank {
      * 缓存拦截器
      */
     private final Interceptor mCacheControlInterceptor = new Interceptor() {
+        public Response originalResponse;
+
         @Override
         public Response intercept(Chain chain) throws IOException {
             Request request = chain.request();
@@ -77,8 +79,11 @@ public class RetrofitGank {
                         .build();
                 MLog.d("dang", "11111");
             }
+            if(NetWorkUtils.isNetworkAvailable(AppApplication.getContext())){
+                 originalResponse = chain.proceed(request);
 
-            Response originalResponse = chain.proceed(request);
+            }
+
 
             if (NetWorkUtils.isNetworkAvailable(AppApplication.getContext())) {
 
