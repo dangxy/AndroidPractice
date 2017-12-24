@@ -31,4 +31,5 @@ public interface IBaseView {
      * @return
      */
     <T> LifecycleTransformer<T> bindToLife();
+
 }
