@@ -14,4 +14,6 @@ import java.util.List;
 public interface ReadHubView extends IBaseView {
 
     void getData(List<Topic> data);
+
+    void setRefresh(List<Topic> data);
 }

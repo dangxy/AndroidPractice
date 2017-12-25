@@ -1,5 +1,6 @@
 package com.dangxy.androidpractice.readhub;
 
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.widget.TextView;
 
 import com.dangxy.androidpractice.R;
@@ -19,13 +20,17 @@ public class ReadHubActivity extends BaseActivity implements ReadHubView {
 
     @BindView(R.id.tv)
     TextView tv;
+    @BindView(R.id.sw_refresh_readhub)
+    SwipeRefreshLayout swRefreshReadhub;
     private ReadHubPresenter readHubPresenter;
+    private int i = 1;
 
 
     @Override
     protected void initView() {
         readHubPresenter = new ReadHubPresenter(this);
         readHubPresenter.getData();
+        readHubPresenter.setRefresh(swRefreshReadhub);
     }
 
     @Override
@@ -38,5 +43,11 @@ public class ReadHubActivity extends BaseActivity implements ReadHubView {
 
         tv.setText(data.get(1).getTitle());
 
+    }
+
+    @Override
+    public void setRefresh(List<Topic> data) {
+        i++;
+        tv.setText(data.get(i).getTitle());
     }
 }

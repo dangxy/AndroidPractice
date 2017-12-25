@@ -8,10 +8,16 @@
     android:orientation="vertical"
     tools:context="com.dangxy.androidpractice.readhub.ReadHubActivity">
 
-    <TextView
-        android:id="@+id/tv"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/sw_refresh_readhub"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+
     <com.dangxy.androidpractice.base.EmptyLayout
         android:id="@+id/empty_layout"
         android:layout_width="match_parent"
