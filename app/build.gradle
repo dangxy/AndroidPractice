@@ -55,4 +55,5 @@ dependencies {
     implementation "android.arch.persistence.room:rxjava2:1.0.0"
     compile 'com.trello:rxlifecycle:1.0'
     compile 'com.trello:rxlifecycle-components:1.0'
+    compile 'com.f2prateek.rx.preferences2:rx-preferences:2.0.0-RC3'
 }

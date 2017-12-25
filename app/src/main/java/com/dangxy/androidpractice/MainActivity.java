@@ -1,7 +1,9 @@
 package com.dangxy.androidpractice;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -10,15 +12,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.FrameLayout;
 
 import com.dangxy.androidpractice.fragment.GankActivity;
 import com.dangxy.androidpractice.fragment.ReadhubFragment;
 import com.dangxy.androidpractice.readhub.ReadHubActivity;
+import com.f2prateek.rx.preferences2.Preference;
+import com.f2prateek.rx.preferences2.RxSharedPreferences;
+import com.jakewharton.rxbinding2.widget.RxCompoundButton;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.reactivex.functions.Consumer;
 
 /**
  * @author dangxy99
@@ -38,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.Readhub)
     Button Readhub;
     private Intent intent;
+    private CheckBox checkbox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        checkbox = (CheckBox) findViewById(R.id.checkbox);
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -58,6 +67,24 @@ public class MainActivity extends AppCompatActivity {
 
         //在Activity中添加fragment
         getSupportFragmentManager().beginTransaction().add(R.id.fl, ReadhubFragment.newInstance(), "readhub").commit();
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        sharedPreferences.edit().putString("username", "dangxy11").commit();
+        sharedPreferences.edit().putBoolean("isChecked", true).commit();
+        RxSharedPreferences rxSharedPreferences = RxSharedPreferences.create(sharedPreferences);
+
+        Preference<String> stringPreference = rxSharedPreferences.getString("username");
+        Preference<Boolean> isChecked = rxSharedPreferences.getBoolean("isChecked", true);
+
+
+        stringPreference.asObservable().subscribe(new Consumer<String>() {
+            @Override
+            public void accept(String s) throws Exception {
+
+            }
+        });
+
+        RxCompoundButton.checkedChanges(checkbox).subscribe(isChecked.asConsumer());
     }
 
     @Override
@@ -76,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @OnClick({R.id.gank, R.id.Readhub})
+    @OnClick({R.id.gank, R.id.Readhub, R.id.checkbox})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.gank:
