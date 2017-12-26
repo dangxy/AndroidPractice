@@ -17,6 +17,7 @@ import android.widget.FrameLayout;
 
 import com.dangxy.androidpractice.fragment.GankActivity;
 import com.dangxy.androidpractice.fragment.ReadhubFragment;
+import com.dangxy.androidpractice.operator.RxOperatorActivity;
 import com.dangxy.androidpractice.readhub.ReadHubActivity;
 import com.dangxy.androidpractice.utils.MLog;
 import com.f2prateek.rx.preferences2.Preference;
@@ -28,6 +29,9 @@ import butterknife.OnClick;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.ObservableOperator;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import rx.Subscriber;
@@ -144,17 +148,51 @@ public class MainActivity extends AppCompatActivity {
         Observable.create(onSubscribe)
                 .map(func1)
                 .subscribe(consumer);
-        Observable.create(onSubscribe).map(new Function<String, Integer>() {
-            @Override
-            public Integer apply(String s) throws Exception {
-                return Integer.parseInt(s);
-            }
-        }).subscribe(new Consumer<Integer>() {
-            @Override
-            public void accept(Integer integer) throws Exception {
+        Observable.create(onSubscribe)
+                .map(new Function<String, Integer>() {
+                    @Override
+                    public Integer apply(String s) throws Exception {
+                        return Integer.parseInt(s);
+                    }
+                })
+                .lift(new ObservableOperator<String, Integer>() {
+                    @Override
+                    public Observer<? super Integer> apply(Observer<? super String> observer) throws Exception {
+                        return new Observer<Integer>() {
+                            @Override
+                            public void onSubscribe(Disposable d) {
 
-            }
-        });
+                            }
+
+                            @Override
+                            public void onNext(Integer integer) {
+
+
+                            }
+
+                            @Override
+                            public void onError(Throwable e) {
+
+                            }
+
+                            @Override
+                            public void onComplete() {
+
+                            }
+                        };
+                    }
+                })
+                .subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(String o) throws Exception {
+
+                    }
+                });
+
+
+
+
+
 
     }
 
@@ -174,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @OnClick({R.id.gank, R.id.Readhub, R.id.checkbox})
+    @OnClick({R.id.gank, R.id.Readhub, R.id.checkbox,R.id.opertaor})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.gank:
@@ -184,6 +222,10 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.Readhub:
                 intent = new Intent(this, ReadHubActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.opertaor:
+                intent = new Intent(this, RxOperatorActivity.class);
                 startActivity(intent);
                 break;
             default:
