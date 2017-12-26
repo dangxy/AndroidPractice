@@ -5,8 +5,8 @@ import android.widget.TextView;
 
 import com.dangxy.androidpractice.R;
 import com.dangxy.androidpractice.base.BaseActivity;
-import com.dangxy.androidpractice.base.IBaseNewPresenter;
 import com.dangxy.androidpractice.entity.Topic;
+import com.dangxy.androidpractice.utils.MLog;
 
 import java.util.List;
 
@@ -29,7 +29,9 @@ public class ReadHubActivity extends BaseActivity implements ReadHubView {
 
     @Override
     protected void initView() {
-
+        readHubPresenter = new ReadHubPresenter(this);
+        readHubPresenter.getData();
+        readHubPresenter.setRefresh(swRefreshReadhub);
     }
 
     @Override
@@ -51,10 +53,8 @@ public class ReadHubActivity extends BaseActivity implements ReadHubView {
     }
 
     @Override
-    protected IBaseNewPresenter initPresenter() {
-        readHubPresenter = new ReadHubPresenter(this);
-        readHubPresenter.getData();
-        readHubPresenter.setRefresh(swRefreshReadhub);
-        return readHubPresenter;
+    public void getFirstData(String s) {
+
+        MLog.e("DANG", s + "title");
     }
 }

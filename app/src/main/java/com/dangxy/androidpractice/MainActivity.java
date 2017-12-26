@@ -18,14 +18,19 @@ import android.widget.FrameLayout;
 import com.dangxy.androidpractice.fragment.GankActivity;
 import com.dangxy.androidpractice.fragment.ReadhubFragment;
 import com.dangxy.androidpractice.readhub.ReadHubActivity;
+import com.dangxy.androidpractice.utils.MLog;
 import com.f2prateek.rx.preferences2.Preference;
 import com.f2prateek.rx.preferences2.RxSharedPreferences;
-import com.jakewharton.rxbinding2.widget.RxCompoundButton;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
+import rx.Subscriber;
 
 /**
  * @author dangxy99
@@ -74,17 +79,83 @@ public class MainActivity extends AppCompatActivity {
         RxSharedPreferences rxSharedPreferences = RxSharedPreferences.create(sharedPreferences);
 
         Preference<String> stringPreference = rxSharedPreferences.getString("username");
-        Preference<Boolean> isChecked = rxSharedPreferences.getBoolean("isChecked", true);
+        Preference<Boolean> isChecked = rxSharedPreferences.getBoolean("isChecked", false);
 
 
         stringPreference.asObservable().subscribe(new Consumer<String>() {
             @Override
             public void accept(String s) throws Exception {
 
+                MLog.e("DANG", "s" + s);
             }
         });
 
-        RxCompoundButton.checkedChanges(checkbox).subscribe(isChecked.asConsumer());
+        //RxCompoundButton.checkedChanges(checkbox).subscribe(isChecked.asConsumer());
+        isChecked.asObservable().subscribe(new Consumer<Boolean>() {
+            @Override
+            public void accept(Boolean aBoolean) throws Exception {
+
+                if (aBoolean) {
+                    MLog.e("DANG", "true");
+                }
+            }
+        });
+        ObservableOnSubscribe<String> onSubscribe = new ObservableOnSubscribe<String>() {
+            @Override
+            public void subscribe(ObservableEmitter<String> e) throws Exception {
+
+                e.onNext("61");
+                e.onComplete();
+            }
+        };
+        Subscriber<String> subscriber = new Subscriber<String>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(String s) {
+
+            }
+        };
+
+        Consumer<Integer> consumer = new Consumer<Integer>() {
+            @Override
+            public void accept(Integer string) throws Exception {
+
+                MLog.e("DANG", (string + 5) + "");
+            }
+
+
+        };
+
+        Function<String, Integer> func1 = new Function<String, Integer>() {
+            @Override
+            public Integer apply(String s) throws Exception {
+                return Integer.parseInt(s);
+            }
+        };
+        Observable.create(onSubscribe)
+                .map(func1)
+                .subscribe(consumer);
+        Observable.create(onSubscribe).map(new Function<String, Integer>() {
+            @Override
+            public Integer apply(String s) throws Exception {
+                return Integer.parseInt(s);
+            }
+        }).subscribe(new Consumer<Integer>() {
+            @Override
+            public void accept(Integer integer) throws Exception {
+
+            }
+        });
+
     }
 
     @Override

@@ -12,6 +12,7 @@ import com.dangxy.androidpractice.utils.MLog;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -64,6 +65,21 @@ public class ReadHubPresenter implements IBaseNewPresenter, SwipeRefreshLayout.O
                             readHubView.getData(topicRsp.getData());
                         }
                         readHubView.hideLoading();
+                    }
+                });
+
+        readhubService.listTopicNews("",15)
+                .subscribeOn(Schedulers.io())
+                .map(new Function<TopicRsp, String>() {
+                    @Override
+                    public String apply(TopicRsp topicRsp) throws Exception {
+                        return topicRsp.getData().get(1).getTitle();
+                    }
+                }).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(String s) throws Exception {
+                        readHubView.getFirstData(s);
                     }
                 });
 

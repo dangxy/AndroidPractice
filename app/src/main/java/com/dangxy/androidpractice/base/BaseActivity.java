@@ -16,7 +16,7 @@ import butterknife.ButterKnife;
  * @description 描述
  * @date 2017/12/24
  */
-public abstract class BaseActivity<T extends IBaseNewPresenter> extends RxActivity implements IBaseView {
+public abstract class BaseActivity extends RxActivity implements IBaseView {
     @Nullable
     @BindView(R.id.empty_layout)
     protected EmptyLayout mEmptyLayout;
@@ -27,7 +27,6 @@ public abstract class BaseActivity<T extends IBaseNewPresenter> extends RxActivi
         setContentView(attachLayoutRes());
         ButterKnife.bind(this);
         initView();
-        initPresenter();
     }
     /**
      * 初始化view
@@ -42,11 +41,6 @@ public abstract class BaseActivity<T extends IBaseNewPresenter> extends RxActivi
     @LayoutRes
     protected abstract int attachLayoutRes();
 
-    /**
-     * 初始化presnter
-     * @return
-     */
-    protected  abstract  T initPresenter();
 
     @Override
     public void showLoading() {
