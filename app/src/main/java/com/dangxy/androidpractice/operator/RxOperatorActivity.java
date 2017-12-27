@@ -20,9 +20,11 @@ import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.BiConsumer;
 import io.reactivex.functions.BiFunction;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
+import io.reactivex.functions.Predicate;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -45,6 +47,15 @@ public class RxOperatorActivity extends BaseActivity {
     @Override
     protected void initView() {
 
+        Observable observable = Observable.fromCallable(new Callable() {
+            @Override
+            public Object call() throws Exception {
+
+                return null;
+            }
+        });
+
+
     }
 
     @Override
@@ -53,7 +64,7 @@ public class RxOperatorActivity extends BaseActivity {
     }
 
     @OnClick({R.id.create, R.id.just, R.id.fromArray, R.id.fromIterable, R.id.defer, R.id.time, R.id.interval, R.id.interval_range, R.id.range,
-            R.id.map, R.id.flatmap, R.id.concatmap, R.id.merge, R.id.concat,R.id.zip})
+            R.id.map, R.id.flatmap, R.id.concatmap, R.id.merge, R.id.concat, R.id.zip, R.id.collect, R.id.all, R.id.take_while, R.id.skip_while})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.create:
@@ -101,10 +112,117 @@ public class RxOperatorActivity extends BaseActivity {
             case R.id.zip:
                 zipOperator();
                 break;
-
+            case R.id.collect:
+                collectOperator();
+                break;
+            case R.id.all:
+                allOperator();
+                break;
+            case R.id.take_while:
+                takeWhileOperator();
+                break;
+            case R.id.skip_while:
+                skipWhileOperator();
+                //concatAndMergeOperator();
+                break;
             default:
                 break;
         }
+    }
+
+    private void concatAndMergeOperator() {
+
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        list.add(5);
+
+
+    }
+
+    public Observable<Integer> getInteger(List<Integer> list) {
+
+        return Observable.fromIterable(list);
+    }
+
+
+    private void skipWhileOperator() {
+    }
+
+    private void takeWhileOperator() {
+
+
+        Observable.interval(1, TimeUnit.SECONDS)
+                .takeWhile(new Predicate<Long>() {
+                    @Override
+                    public boolean test(Long integer) throws Exception {
+                        return integer < 10;
+                    }
+                })
+                .subscribe(new Consumer<Long>() {
+                    @Override
+                    public void accept(Long integer) throws Exception {
+
+                    }
+                });
+
+
+    }
+
+    private void allOperator() {
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        list.add(5);
+        Observable
+                .fromIterable(list)
+                .all(new Predicate<Integer>() {
+                    @Override
+                    public boolean test(Integer integer) throws Exception {
+
+                        return integer > 0;
+                    }
+                })
+                .subscribe(new Consumer<Boolean>() {
+                    @Override
+                    public void accept(Boolean aBoolean) throws Exception {
+
+                        MLog.e("all", aBoolean + "");
+                    }
+                });
+
+
+    }
+
+    private void collectOperator() {
+        Observable
+                .just("1", "2", "3", "4")
+                .collect(new Callable<ArrayList<String>>() {
+                    @Override
+                    public ArrayList<String> call() throws Exception {
+                        return new ArrayList<>();
+                    }
+                }, new BiConsumer<ArrayList<String>, String>() {
+                    @Override
+                    public void accept(ArrayList<String> string, String s2) throws Exception {
+                        string.add(s2);
+                    }
+                })
+                .subscribe(new Consumer<ArrayList<String>>() {
+                    @Override
+                    public void accept(ArrayList<String> strings) throws Exception {
+                        for (String str : strings) {
+                            MLog.e("DANG", str + "collect");
+
+                        }
+                    }
+                });
+
+
     }
 
     private void zipOperator() {
