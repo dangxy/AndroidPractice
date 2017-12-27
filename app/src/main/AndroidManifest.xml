@@ -73,8 +73,10 @@
         <activity android:name=".readhub.ReadHubActivity" />
         <activity android:name=".operator.RxOperatorActivity" />
         <activity android:name=".view.view.ViewActivity" />
-        <activity android:name=".view.ViewGroupActivity" />
-        <activity android:name=".view.activity.EventActivity"></activity>
+        <activity android:name=".view.viewgroup.ViewGroupActivity" />
+        <activity android:name=".view.activity.EventActivity" />
+        <activity android:name=".custom.CustomViewActivity" />
+        <activity android:name=".handler.HandlerActivity"></activity>
     </application>
 
 </manifest>

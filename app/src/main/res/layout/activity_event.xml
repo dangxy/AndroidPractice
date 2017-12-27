@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.dangxy.androidpractice.view.viewgroup.ParentViewGroup xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:id="@+id/event_layout"
     tools:context="com.dangxy.androidpractice.view.activity.EventActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <com.dangxy.androidpractice.view.viewgroup.SonView
+        android:id="@+id/event_view"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:background="@color/color_00a79d"
+        android:gravity="center"
+        android:text="son view" />
+</com.dangxy.androidpractice.view.viewgroup.ParentViewGroup>

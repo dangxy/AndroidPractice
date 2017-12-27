@@ -1,4 +1,4 @@
-package com.dangxy.androidpractice.view;
+package com.dangxy.androidpractice.view.viewgroup;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,9 +7,6 @@ import android.view.View;
 
 import com.dangxy.androidpractice.R;
 import com.dangxy.androidpractice.utils.MLog;
-import com.dangxy.androidpractice.view.viewgroup.GrandViewGroup;
-import com.dangxy.androidpractice.view.viewgroup.ParentViewGroup;
-import com.dangxy.androidpractice.view.viewgroup.SonView;
 
 /**
  * @author dangxy99
