@@ -71,7 +71,10 @@
             android:label="@string/title_activity_base"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".readhub.ReadHubActivity" />
-        <activity android:name=".operator.RxOperatorActivity"></activity>
+        <activity android:name=".operator.RxOperatorActivity" />
+        <activity android:name=".view.view.ViewActivity" />
+        <activity android:name=".view.ViewGroupActivity" />
+        <activity android:name=".view.activity.EventActivity"></activity>
     </application>
 
 </manifest>

@@ -20,6 +20,8 @@ import com.dangxy.androidpractice.fragment.ReadhubFragment;
 import com.dangxy.androidpractice.operator.RxOperatorActivity;
 import com.dangxy.androidpractice.readhub.ReadHubActivity;
 import com.dangxy.androidpractice.utils.MLog;
+import com.dangxy.androidpractice.view.ViewGroupActivity;
+import com.dangxy.androidpractice.view.view.ViewActivity;
 import com.f2prateek.rx.preferences2.Preference;
 import com.f2prateek.rx.preferences2.RxSharedPreferences;
 
@@ -190,10 +192,6 @@ public class MainActivity extends AppCompatActivity {
                 });
 
 
-
-
-
-
     }
 
     @Override
@@ -212,7 +210,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @OnClick({R.id.gank, R.id.Readhub, R.id.checkbox,R.id.opertaor})
+    @OnClick({R.id.gank, R.id.Readhub, R.id.checkbox, R.id.opertaor, R.id.view,R.id.view_group})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.gank:
@@ -226,6 +224,14 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.opertaor:
                 intent = new Intent(this, RxOperatorActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.view:
+                intent = new Intent(this, ViewActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.view_group:
+                intent = new Intent(this, ViewGroupActivity.class);
                 startActivity(intent);
                 break;
             default:

@@ -149,6 +149,37 @@ public class RxOperatorActivity extends BaseActivity {
 
 
     private void skipWhileOperator() {
+        Observable.interval(1, TimeUnit.SECONDS)
+                .takeUntil(new Predicate<Long>() {
+                    @Override
+                    public boolean test(Long aLong) throws Exception {
+                        return aLong>5;
+                    }
+                })
+                .subscribe(new Observer<Long>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Long aLong) {
+                          MLog.e("skip",aLong+"");
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+
+
     }
 
     private void takeWhileOperator() {

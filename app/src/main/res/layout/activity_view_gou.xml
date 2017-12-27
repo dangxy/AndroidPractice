@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="com.dangxy.androidpractice.view.ViewGroupActivity">
+
+
+    <com.dangxy.androidpractice.view.viewgroup.GrandViewGroup
+        android:id="@+id/grand"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:gravity="center"
+        android:background="@color/color_4d4d4d"
+        android:orientation="vertical">
+
+        <com.dangxy.androidpractice.view.viewgroup.ParentViewGroup
+            android:id="@+id/parent"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:gravity="center"
+            android:background="@color/color_d90051"
+            android:orientation="vertical">
+
+            <com.dangxy.androidpractice.view.viewgroup.SonView
+                android:id="@+id/son"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:gravity="center"
+                android:background="@color/color_f5f5f5"
+                android:text="son" />
+
+        </com.dangxy.androidpractice.view.viewgroup.ParentViewGroup>
+
+    </com.dangxy.androidpractice.view.viewgroup.GrandViewGroup>
+</LinearLayout>
