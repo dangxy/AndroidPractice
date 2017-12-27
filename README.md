@@ -33,6 +33,21 @@
 16. range
 17. interval
 18. intervalRange
+> 重点区分  **concat merge flatMap concatMap**
+
+ * concat: 组合多个被观察者一起发送数据，合并后 按发送顺序串行执行
+ * merge: 组合多个被观察者一起发送数据，合并后 按时间线并行执行
+ * concatMap 将被观察者发送的事件序列进行 拆分&单独转换，再合并成一个新的事件序列，最后再进行发送
+ * flatMap  拆分&重新合并生成的事件序列 的顺序 = 被观察者旧序列生产的顺序
+### Rxjava 的使用场景
+
+1. 取数据先检查缓存情景
+2. 等到多个接口并发取完数据
+3. 一个接口的请求依赖另一个Api数据的返回
+4. 界面按钮需要防止连续点击的情况
+5. 响应式的界面
+6. 复杂的数据变化
+
 ### MAP
 1. 对基类BaseView，BasePresenter 的封装
 2. 对于IViewContract的讲解
