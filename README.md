@@ -34,7 +34,7 @@
 17. interval
 18. intervalRange
 ### MAP
-1. 对基类BaseView，BasePresenterde 封装
+1. 对基类BaseView，BasePresenter 的封装
 2. 对于IViewContract的讲解
 3. 创建模板MVPContract
 ### 懒加载
@@ -57,5 +57,13 @@
 2. 对Fragment生命周期
 ### View截图
 1. 保存为Bitmap对象
+### Handler LOOP MessagQueue Thread
+1. handler
+### Readhub
+1. 从Readhub获取数据
+### Gank.io
+1. 从Gank.io获取数据
+
+
 
 
