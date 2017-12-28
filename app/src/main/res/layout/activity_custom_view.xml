@@ -4,21 +4,68 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.dangxy.androidpractice.custom.CustomViewActivity">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-    <Button
-        android:id="@+id/paint"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="paint"/>
-    <Button
-        android:id="@+id/canvas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="canvas"/>
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/paint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="paint" />
+
+        <Button
+            android:id="@+id/canvas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="canvas" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <com.dangxy.androidpractice.custom.FirstTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="11222222" />
+
+    </LinearLayout>
+
+    <SeekBar
+        android:id="@+id/seekbar_width"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <SeekBar
+        android:id="@+id/seekbar_height"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="120dp"
+        android:layout_height="160dp"
+        android:gravity="left"
+        android:background="@color/color_d90051"
+        android:orientation="vertical">
+        <com.dangxy.androidpractice.custom.FirstImageView
+            android:id="@+id/firs_image"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:background="@drawable/user_avatar"
+            android:scaleType="centerCrop" />
+
+
+    </LinearLayout>
+
+
 </LinearLayout>

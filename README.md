@@ -78,6 +78,11 @@
 1. 从Readhub获取数据
 ### Gank.io
 1. 从Gank.io获取数据
+### 自定义View
+1. 继承现有的View
+2. SquareImageView
+3. 动态改变父View的宽高
+
 
 
 
