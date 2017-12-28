@@ -76,7 +76,8 @@
         <activity android:name=".view.viewgroup.ViewGroupActivity" />
         <activity android:name=".view.activity.EventActivity" />
         <activity android:name=".custom.CustomViewActivity" />
-        <activity android:name=".handler.HandlerActivity"></activity>
+        <activity android:name=".handler.HandlerActivity" />
+        <activity android:name=".custom.CircleActivity"></activity>
     </application>
 
 </manifest>

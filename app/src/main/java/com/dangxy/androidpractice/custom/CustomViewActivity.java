@@ -1,5 +1,6 @@
 package com.dangxy.androidpractice.custom;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.SeekBar;
 
 import com.dangxy.androidpractice.R;
+import com.dangxy.androidpractice.custom.view.FirstImageView;
 import com.dangxy.androidpractice.utils.MLog;
 import com.dangxy.androidpractice.utils.ViewDisplayHelper;
 
@@ -42,7 +44,7 @@ public class CustomViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_view);
         ButterKnife.bind(this);
-        mContext =this;
+        mContext = this;
 
 
         seekbarWidth.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -50,11 +52,9 @@ public class CustomViewActivity extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 MLog.e("DANG", i + "");
                 layoutParams = (LinearLayout.LayoutParams) linearLayout.getLayoutParams();
-                layoutParams.width = ViewDisplayHelper.dp2px(mContext, (5*i));
+                layoutParams.width = ViewDisplayHelper.dp2px(mContext, (5 * i));
                 layoutParams.height = ViewDisplayHelper.dp2px(mContext, 150);
                 linearLayout.setLayoutParams(layoutParams);
-
-
             }
 
             @Override
@@ -71,8 +71,8 @@ public class CustomViewActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 layoutParams = (LinearLayout.LayoutParams) linearLayout.getLayoutParams();
-                layoutParams.height = ViewDisplayHelper.dp2px(mContext, (5*i));
-                layoutParams.width= ViewDisplayHelper.dp2px(mContext, 150);
+                layoutParams.height = ViewDisplayHelper.dp2px(mContext, (5 * i));
+                layoutParams.width = ViewDisplayHelper.dp2px(mContext, 150);
                 linearLayout.setLayoutParams(layoutParams);
             }
 
@@ -88,18 +88,21 @@ public class CustomViewActivity extends AppCompatActivity {
         });
     }
 
-    @OnClick({R.id.paint, R.id.canvas})
+    @OnClick({R.id.paint, R.id.canvas,R.id.canvas_circle})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.paint:
                 LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) firsImage.getLayoutParams();
-
                 layoutParams.width = ViewDisplayHelper.dp2px(this, 150);
                 layoutParams.height = ViewDisplayHelper.dp2px(this, 200);
                 firsImage.setLayoutParams(layoutParams);
                 break;
             case R.id.canvas:
 
+                break;
+            case R.id.canvas_circle:
+                Intent intent = new Intent(this, CircleActivity.class);
+                startActivity(intent);
                 break;
             default:
                 break;

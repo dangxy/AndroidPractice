@@ -1,13 +1,11 @@
-package com.dangxy.androidpractice.custom;
+package com.dangxy.androidpractice.custom.view;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 
-import com.dangxy.androidpractice.AppApplication;
 import com.dangxy.androidpractice.utils.MLog;
-import com.dangxy.androidpractice.utils.ViewDisplayHelper;
 
 /**
  * @author dangxueyi
@@ -37,10 +35,18 @@ public class FirstTextView extends AppCompatTextView {
         int height = getMeasuredHeight();
         int widgth = getMeasuredWidth();
 
-        MLog.e("DANG", height + "--" + widgth);
-        MLog.e("DANG", ViewDisplayHelper.px2dp(AppApplication.getContext(),height) + "++" + ViewDisplayHelper.px2dp(AppApplication.getContext(),widgth));
+        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
 
-        setMeasuredDimension(widgth,height);
+
+        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
+
+        MLog.e("DANG", widthMode + "--" + widthSize);
+        MLog.e("DANG", heightMode + "++" + heightSize);
+
+
+        setMeasuredDimension(widgth, height);
 
 
     }
