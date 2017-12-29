@@ -9,8 +9,6 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.dangxy.androidpractice.utils.MLog;
-
 /**
  * @author dangxueyi
  * @description
