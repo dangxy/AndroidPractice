@@ -213,7 +213,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @OnClick({R.id.gank, R.id.Readhub, R.id.checkbox, R.id.opertaor, R.id.view, R.id.view_group, R.id.view_custom
-            , R.id.handler})
+            , R.id.handler,R.id.web_view})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.gank:
@@ -243,6 +243,10 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.handler:
                 intent = new Intent(this, HandlerActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.web_view:
+                intent = new Intent(this, com.dangxy.androidpractice.webview.MainActivity.class);
                 startActivity(intent);
                 break;
             default:
