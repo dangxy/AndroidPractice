@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.FrameLayout;
 
+import com.dangxy.androidpractice.behavior.FirstScrollingActivity;
 import com.dangxy.androidpractice.custom.CustomViewActivity;
 import com.dangxy.androidpractice.fragment.GankActivity;
 import com.dangxy.androidpractice.fragment.ReadhubFragment;
@@ -213,7 +214,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @OnClick({R.id.gank, R.id.Readhub, R.id.checkbox, R.id.opertaor, R.id.view, R.id.view_group, R.id.view_custom
-            , R.id.handler,R.id.web_view})
+            , R.id.handler,R.id.web_view,R.id.coordinatorLayout})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.gank:
@@ -247,6 +248,10 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.web_view:
                 intent = new Intent(this, com.dangxy.androidpractice.webview.MainActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.coordinatorLayout:
+                intent = new Intent(this, FirstScrollingActivity.class);
                 startActivity(intent);
                 break;
             default:

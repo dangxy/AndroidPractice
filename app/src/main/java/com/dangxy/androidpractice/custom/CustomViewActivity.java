@@ -9,7 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.SeekBar;
 
 import com.dangxy.androidpractice.R;
-import com.dangxy.androidpractice.custom.view.FirstImageView;
+import com.dangxy.androidpractice.custom.view.SqureImageView;
 import com.dangxy.androidpractice.utils.MLog;
 import com.dangxy.androidpractice.utils.ViewDisplayHelper;
 
@@ -33,7 +33,7 @@ public class CustomViewActivity extends AppCompatActivity {
     @BindView(R.id.seekbar_height)
     SeekBar seekbarHeight;
     @BindView(R.id.firs_image)
-    FirstImageView firsImage;
+    SqureImageView firsImage;
     @BindView(R.id.ll)
     LinearLayout linearLayout;
     private CustomViewActivity mContext;

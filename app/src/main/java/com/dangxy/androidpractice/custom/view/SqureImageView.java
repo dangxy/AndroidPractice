@@ -11,17 +11,17 @@ import android.util.AttributeSet;
  * @date 2017/12/28
  */
 
-public class FirstImageView extends AppCompatImageView {
+public class SqureImageView extends AppCompatImageView {
 
-    public FirstImageView(Context context) {
+    public SqureImageView(Context context) {
         super(context);
     }
 
-    public FirstImageView(Context context, @Nullable AttributeSet attrs) {
+    public SqureImageView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public FirstImageView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public SqureImageView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
@@ -30,12 +30,11 @@ public class FirstImageView extends AppCompatImageView {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         int width = getMeasuredWidth();
         int height = getMeasuredHeight();
-
-//        if (width > height) {
-//            height = width;
-//        } else {
-//            width = height;
-//        }
+        if (width > height) {
+            height = width;
+        } else {
+            width = height;
+        }
         setMeasuredDimension(width, height);
     }
 
