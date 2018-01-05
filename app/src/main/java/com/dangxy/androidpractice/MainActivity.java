@@ -15,7 +15,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.FrameLayout;
 
-import com.dangxy.androidpractice.behavior.FirstScrollingActivity;
+import com.dangxy.androidpractice.behavior.SecondScrollingActivity;
 import com.dangxy.androidpractice.custom.CustomViewActivity;
 import com.dangxy.androidpractice.fragment.GankActivity;
 import com.dangxy.androidpractice.fragment.ReadhubFragment;
@@ -251,7 +251,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.coordinatorLayout:
-                intent = new Intent(this, FirstScrollingActivity.class);
+                intent = new Intent(this, SecondScrollingActivity.class);
                 startActivity(intent);
                 break;
             default:

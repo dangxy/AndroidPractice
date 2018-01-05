@@ -93,7 +93,11 @@
             android:name=".behavior.FirstScrollingActivity"
             android:label="@string/title_activity_first_scrolling"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".behavior.BehaviorSimpleActivity"></activity>
+        <activity android:name=".behavior.BehaviorSimpleActivity" />
+        <activity
+            android:name=".behavior.SecondScrollingActivity"
+            android:label="@string/title_activity_second_scrolling"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
