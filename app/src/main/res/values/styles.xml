@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="AppTheme.Base">
@@ -30,4 +30,23 @@
     <declare-styleable name="EmptyLayout">
         <attr name="background_color" format="color" />
     </declare-styleable>
+    <style name="WebAppTheme.AppBarOverlay"
+        parent="Theme.AppCompat.Light"/>
+
+    <style name="WebTitle"
+        parent="@android:style/TextAppearance">
+        <item name="android:textSize"
+            tools:ignore="SpUsage">18dp
+        </item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:marqueeRepeatLimit">marquee_forever</item>
+        <item name="android:scrollHorizontally">true</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="WebAppTheme"
+        parent="Theme.Swipe.Back">
+        <item name="colorPrimaryDark">@android:color/black</item>
+        <item name="colorControlNormal">@android:color/black</item>
+    </style>
 </resources>

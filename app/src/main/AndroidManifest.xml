@@ -97,7 +97,11 @@
         <activity
             android:name=".behavior.SecondScrollingActivity"
             android:label="@string/title_activity_second_scrolling"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".back.BackActivity"></activity>
+        <activity
+            android:name=".back.WebActivity"
+            android:launchMode="singleTask"/>
     </application>
 
 </manifest>

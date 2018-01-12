@@ -80,9 +80,14 @@
             android:layout_height="wrap_content"
             android:text="X5"/>
         <Button
-            android:id="@+id/coordinatorLayout"
+        android:id="@+id/coordinatorLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="coordinatorLayout"/>
+        <Button
+            android:id="@+id/back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="coordinatorLayout"/>
+            android:text="back"/>
     </LinearLayout>
 </LinearLayout>

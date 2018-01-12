@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.FrameLayout;
 
+import com.dangxy.androidpractice.back.WebActivity;
 import com.dangxy.androidpractice.behavior.SecondScrollingActivity;
 import com.dangxy.androidpractice.custom.CustomViewActivity;
 import com.dangxy.androidpractice.fragment.GankActivity;
@@ -47,7 +48,8 @@ import rx.Subscriber;
  * @date 2017/12/23
  */
 public class MainActivity extends AppCompatActivity {
-
+    public static final int INSTANT_IN = 0;
+    public static final int INSTANT_OUT = 0;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.fl)
@@ -64,11 +66,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        overridePendingTransition(INSTANT_IN, INSTANT_OUT);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         checkbox = (CheckBox) findViewById(R.id.checkbox);
-        setSupportActionBar(toolbar);
+        //setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -214,7 +217,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @OnClick({R.id.gank, R.id.Readhub, R.id.checkbox, R.id.opertaor, R.id.view, R.id.view_group, R.id.view_custom
-            , R.id.handler,R.id.web_view,R.id.coordinatorLayout})
+            , R.id.handler,R.id.web_view,R.id.coordinatorLayout,R.id.back})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.gank:
@@ -254,8 +257,18 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(this, SecondScrollingActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.back:
+                intent = new Intent(this, WebActivity.class);
+                intent.putExtra("extra_url","http://wwww.chenzao.com");
+                startActivity(intent);
+                break;
             default:
                 break;
         }
+    }
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(INSTANT_IN, INSTANT_OUT);
     }
 }

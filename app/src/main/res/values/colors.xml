@@ -64,5 +64,6 @@
 
     <color name="color_ff3a83">#ff3a83</color>
     <color name="color_db0555">#db0555</color>
+    <color name="black_p50">#7f000000</color>
 
 </resources>
