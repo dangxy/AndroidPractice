@@ -22,6 +22,7 @@ import com.dangxy.androidpractice.fragment.GankActivity;
 import com.dangxy.androidpractice.fragment.ReadhubFragment;
 import com.dangxy.androidpractice.handler.HandlerActivity;
 import com.dangxy.androidpractice.operator.RxOperatorActivity;
+import com.dangxy.androidpractice.ormlite.OrmliteActivity;
 import com.dangxy.androidpractice.readhub.ReadHubActivity;
 import com.dangxy.androidpractice.utils.MLog;
 import com.dangxy.androidpractice.view.view.ViewActivity;
@@ -217,7 +218,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @OnClick({R.id.gank, R.id.Readhub, R.id.checkbox, R.id.opertaor, R.id.view, R.id.view_group, R.id.view_custom
-            , R.id.handler,R.id.web_view,R.id.coordinatorLayout,R.id.back})
+            , R.id.handler,R.id.web_view,R.id.coordinatorLayout,R.id.back,R.id.ormlite})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.gank:
@@ -260,6 +261,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.back:
                 intent = new Intent(this, WebActivity.class);
                 intent.putExtra("extra_url","http://wwww.chenzao.com");
+                startActivity(intent);
+                break;
+            case R.id.ormlite:
+                intent = new Intent(this, OrmliteActivity.class);
                 startActivity(intent);
                 break;
             default:

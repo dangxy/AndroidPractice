@@ -59,7 +59,7 @@ dependencies {
     compile 'com.trello:rxlifecycle:1.0'
     compile 'com.trello:rxlifecycle-components:1.0'
     compile 'com.f2prateek.rx.preferences2:rx-preferences:2.0.0-RC3'
-    compile files('libs/tbs_sdk_thirdapp_v3.1.0.1034_43100_sharewithdownload_obfs_20170301_182143.jar')
     compile 'com.daimajia.numberprogressbar:library:1.4@aar'
     compile 'com.github.liuguangqiang.swipeback:library:1.0.2@aar'
+    compile 'com.j256.ormlite:ormlite-android:5.0'
 }
