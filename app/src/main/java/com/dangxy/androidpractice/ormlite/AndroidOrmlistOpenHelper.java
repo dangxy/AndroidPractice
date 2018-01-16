@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.DeleteBuilder;
+import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.stmt.UpdateBuilder;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
@@ -91,6 +92,8 @@ public class AndroidOrmlistOpenHelper extends OrmLiteSqliteOpenHelper {
     }
 
     public List<UserInfo> queryUserAll() throws SQLException {
+       QueryBuilder<UserInfo,Integer> queryBuilder = getUser().queryBuilder();
+
         return getUser().queryForAll();
     }
     public void updateByPassword(String password) throws SQLException {

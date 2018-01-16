@@ -20,6 +20,7 @@ import com.dangxy.androidpractice.behavior.SecondScrollingActivity;
 import com.dangxy.androidpractice.custom.CustomViewActivity;
 import com.dangxy.androidpractice.fragment.GankActivity;
 import com.dangxy.androidpractice.fragment.ReadhubFragment;
+import com.dangxy.androidpractice.greendao.GreenDaoActivity;
 import com.dangxy.androidpractice.handler.HandlerActivity;
 import com.dangxy.androidpractice.operator.RxOperatorActivity;
 import com.dangxy.androidpractice.ormlite.OrmliteActivity;
@@ -218,7 +219,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @OnClick({R.id.gank, R.id.Readhub, R.id.checkbox, R.id.opertaor, R.id.view, R.id.view_group, R.id.view_custom
-            , R.id.handler,R.id.web_view,R.id.coordinatorLayout,R.id.back,R.id.ormlite})
+            , R.id.handler,R.id.web_view,R.id.coordinatorLayout,R.id.back,R.id.ormlite, R.id.greendao})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.gank:
@@ -265,6 +266,10 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.ormlite:
                 intent = new Intent(this, OrmliteActivity.class);
+                startActivity(intent);
+                break;
+                case R.id.greendao:
+                intent = new Intent(this, GreenDaoActivity.class);
                 startActivity(intent);
                 break;
             default:

@@ -3,6 +3,9 @@ package com.dangxy.androidpractice;
 import android.app.Application;
 import android.content.Context;
 
+import com.dangxy.androidpractice.greendao.DaoMaster;
+import com.dangxy.androidpractice.greendao.DaoSession;
+
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
@@ -15,6 +18,7 @@ import io.realm.RealmConfiguration;
 public class AppApplication extends Application {
 
     private static Context mContext;
+    private static DaoSession daoSession;
 
     public static Context getContext() {
 
@@ -31,5 +35,14 @@ public class AppApplication extends Application {
                 .schemaVersion(2)
                 .build();
         Realm.setDefaultConfiguration(config);
+        DaoMaster.DevOpenHelper devOpenHelper = new DaoMaster.DevOpenHelper(AppApplication.getContext(), "student-db.db", null);
+        DaoMaster daoMaster = new DaoMaster(devOpenHelper.getWritableDatabase());
+         daoSession = daoMaster.newSession();
+
+
+    }
+    public static DaoSession getSession(){
+
+        return daoSession;
     }
 }
