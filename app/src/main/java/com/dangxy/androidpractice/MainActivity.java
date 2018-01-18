@@ -200,6 +200,11 @@ public class MainActivity extends AppCompatActivity {
                 });
 
 
+        OrmliteActivity.Box<String> name = new OrmliteActivity.Box<String>("String");
+
+
+        name.getData();
+
     }
 
     @Override

@@ -103,7 +103,8 @@
             android:name=".back.WebActivity"
             android:launchMode="singleTask" />
         <activity android:name=".ormlite.OrmliteActivity" />
-        <activity android:name=".greendao.GreenDaoActivity"></activity>
+        <activity android:name=".greendao.GreenDaoActivity" />
+        <activity android:name=".generics.GenericsActivity"></activity>
     </application>
 
 </manifest>

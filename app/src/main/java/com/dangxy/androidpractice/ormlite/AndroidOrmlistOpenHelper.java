@@ -27,6 +27,7 @@ public class AndroidOrmlistOpenHelper extends OrmLiteSqliteOpenHelper {
     private static AndroidOrmlistOpenHelper instance;
 
     private Dao<UserInfo, Integer> userDao;
+    private Dao<Class, Integer> daoByName;
 
 
     public AndroidOrmlistOpenHelper(Context context) {
@@ -59,7 +60,7 @@ public class AndroidOrmlistOpenHelper extends OrmLiteSqliteOpenHelper {
 
     }
 
-    public  static synchronized AndroidOrmlistOpenHelper getHelper(Context context) {
+    public static synchronized AndroidOrmlistOpenHelper getHelper(Context context) {
         if (instance == null) {
             synchronized (AndroidOrmlistOpenHelper.class) {
                 if (instance == null) {
@@ -81,27 +82,50 @@ public class AndroidOrmlistOpenHelper extends OrmLiteSqliteOpenHelper {
 
     }
 
+    public Dao<Class, Integer> getDaoByName(Class clazz) throws SQLException {
+
+
+        if (daoByName == null) {
+            daoByName = getDao(clazz);
+
+        }
+        return daoByName;
+
+    }
+
     public void deleteUserByName(String name) throws SQLException {
-        DeleteBuilder deleteBuilder = getUser().deleteBuilder();
+        DeleteBuilder deleteBuilder = getDaoByName(UserInfo.class).deleteBuilder();
         deleteBuilder.where().eq("username", name);
         deleteBuilder.delete();
     }
 
     public void addUser(UserInfo userInfo) throws SQLException {
-        getUser().create(userInfo);
+        //getUser().create(userInfo);
+
+        getDaoByName(UserInfo.class);
     }
 
     public List<UserInfo> queryUserAll() throws SQLException {
-       QueryBuilder<UserInfo,Integer> queryBuilder = getUser().queryBuilder();
+
 
         return getUser().queryForAll();
     }
-    public void updateByPassword(String password) throws SQLException {
-      UpdateBuilder updateBuilder =  getUser().updateBuilder();
 
-      updateBuilder.where().eq("password",password);
-      updateBuilder.updateColumnValue("username","xydang");
-      updateBuilder.update();
+    public List<UserInfo> queryUerByName(String name) throws SQLException {
+
+        QueryBuilder queryBuilder = getUser().queryBuilder();
+
+        queryBuilder.where().eq("password", name);
+
+        return queryBuilder.query();
+    }
+
+    public void updateByPassword(String password) throws SQLException {
+        UpdateBuilder updateBuilder = getUser().updateBuilder();
+
+        updateBuilder.where().eq("password", password);
+        updateBuilder.updateColumnValue("username", "xydang");
+        updateBuilder.update();
     }
 
 

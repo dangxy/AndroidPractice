@@ -49,6 +49,9 @@ public class OrmliteActivity extends Activity {
                     userInfo.setPassword("password" + i * i);
                     try {
                         AndroidOrmlistOpenHelper.getHelper(AppApplication.getContext()).addUser(userInfo);
+
+                        AndroidOrmlistOpenHelper.getHelper(AppApplication.getContext()
+                        ).addUser(userInfo);
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
@@ -91,5 +94,24 @@ public class OrmliteActivity extends Activity {
             default:
                 break;
         }
+
+
     }
+
+    public  static  class Box<T> {
+        private T data;
+
+        public Box() {
+        }
+
+        public Box(T data) {
+            this.data = data;
+        }
+
+        public T getData() {
+            return data;
+        }
+    }
+
+
 }
