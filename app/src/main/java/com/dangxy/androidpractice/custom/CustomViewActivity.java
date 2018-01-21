@@ -88,7 +88,7 @@ public class CustomViewActivity extends AppCompatActivity {
         });
     }
 
-    @OnClick({R.id.paint, R.id.canvas,R.id.canvas_circle})
+    @OnClick({R.id.paint, R.id.canvas, R.id.canvas_circle})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.paint:
@@ -108,4 +108,5 @@ public class CustomViewActivity extends AppCompatActivity {
                 break;
         }
     }
+
 }
