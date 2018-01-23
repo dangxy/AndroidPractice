@@ -104,7 +104,19 @@
             android:launchMode="singleTask" />
         <activity android:name=".ormlite.OrmliteActivity" />
         <activity android:name=".greendao.GreenDaoActivity" />
-        <activity android:name=".generics.GenericsActivity"></activity>
+        <activity android:name=".generics.GenericsActivity" />
+
+        <service
+            android:name=".service.TestIntentService"
+            android:exported="false" />
+        <service
+            android:name=".service.Test1IntentService"
+            android:exported="false" />
+
+        <receiver
+            android:name=".service.MyReceiver"
+            android:enabled="false"
+            android:exported="true"></receiver>
     </application>
 
 </manifest>

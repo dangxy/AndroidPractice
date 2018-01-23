@@ -1,7 +1,9 @@
 package com.dangxy.androidpractice;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
@@ -30,6 +32,7 @@ import com.dangxy.androidpractice.view.view.ViewActivity;
 import com.dangxy.androidpractice.view.viewgroup.ViewGroupActivity;
 import com.f2prateek.rx.preferences2.Preference;
 import com.f2prateek.rx.preferences2.RxSharedPreferences;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -204,6 +207,32 @@ public class MainActivity extends AppCompatActivity {
 
 
         name.getData();
+
+        RxPermissions rxPermissions = new RxPermissions(this);
+
+
+        rxPermissions.request(Manifest.permission.WRITE_SETTINGS)
+                .subscribe(new Consumer<Boolean>() {
+                    @Override
+                    public void accept(Boolean aBoolean) throws Exception {
+                        if(aBoolean){
+                              MLog.e("DANG","有权限");
+                        }else {
+                            requestPermission();
+
+                        }
+                    }
+                });
+
+
+
+    }
+
+    private void requestPermission() {
+        Intent intent = new Intent(android.provider.Settings.ACTION_MANAGE_WRITE_SETTINGS);
+        intent.setData(Uri.parse("package:" + this.getPackageName()));
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
 
     }
 
