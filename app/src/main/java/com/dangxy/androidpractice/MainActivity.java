@@ -1,6 +1,5 @@
 package com.dangxy.androidpractice;
 
-import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -27,6 +26,7 @@ import com.dangxy.androidpractice.handler.HandlerActivity;
 import com.dangxy.androidpractice.operator.RxOperatorActivity;
 import com.dangxy.androidpractice.ormlite.OrmliteActivity;
 import com.dangxy.androidpractice.readhub.ReadHubActivity;
+import com.dangxy.androidpractice.service.CopyService;
 import com.dangxy.androidpractice.utils.MLog;
 import com.dangxy.androidpractice.view.view.ViewActivity;
 import com.dangxy.androidpractice.view.viewgroup.ViewGroupActivity;
@@ -211,19 +211,18 @@ public class MainActivity extends AppCompatActivity {
         RxPermissions rxPermissions = new RxPermissions(this);
 
 
-        rxPermissions.request(Manifest.permission.WRITE_SETTINGS)
-                .subscribe(new Consumer<Boolean>() {
-                    @Override
-                    public void accept(Boolean aBoolean) throws Exception {
-                        if(aBoolean){
-                              MLog.e("DANG","有权限");
-                        }else {
-                            requestPermission();
-
-                        }
-                    }
-                });
-
+//        rxPermissions.request(Manifest.permission.WRITE_SETTINGS,Manifest.permission.CHANGE_NETWORK_STATE)
+//                .subscribe(new Consumer<Boolean>() {
+//                    @Override
+//                    public void accept(Boolean aBoolean) throws Exception {
+//                        if(aBoolean){
+//                              MLog.e("DANG","有权限");
+//                        }else {
+//                            //requestPermission();
+//
+//                        }
+//                    }
+//                });
 
 
     }
@@ -253,7 +252,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @OnClick({R.id.gank, R.id.Readhub, R.id.checkbox, R.id.opertaor, R.id.view, R.id.view_group, R.id.view_custom
-            , R.id.handler,R.id.web_view,R.id.coordinatorLayout,R.id.back,R.id.ormlite, R.id.greendao})
+            , R.id.handler, R.id.web_view, R.id.coordinatorLayout, R.id.back, R.id.ormlite, R.id.greendao, R.id.copy})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.gank:
@@ -295,21 +294,27 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.back:
                 intent = new Intent(this, WebActivity.class);
-                intent.putExtra("extra_url","http://wwww.chenzao.com");
+                intent.putExtra("extra_url", "http://wwww.chenzao.com");
                 startActivity(intent);
                 break;
             case R.id.ormlite:
                 intent = new Intent(this, OrmliteActivity.class);
                 startActivity(intent);
                 break;
-                case R.id.greendao:
+            case R.id.greendao:
                 intent = new Intent(this, GreenDaoActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.copy:
+                Intent intent = new Intent(this, CopyService.class);
+                startService(intent);
+                break;
+
             default:
                 break;
         }
     }
+
     @Override
     public void finish() {
         super.finish();
