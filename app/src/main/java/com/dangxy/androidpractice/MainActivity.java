@@ -258,7 +258,6 @@ public class MainActivity extends AppCompatActivity {
             case R.id.gank:
                 intent = new Intent(this, GankActivity.class);
                 startActivity(intent);
-
                 break;
             case R.id.Readhub:
                 intent = new Intent(this, ReadHubActivity.class);

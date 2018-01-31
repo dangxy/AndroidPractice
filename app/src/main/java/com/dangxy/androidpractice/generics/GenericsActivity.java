@@ -17,10 +17,23 @@ public class GenericsActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_generics);
 
-        Test<? extends Number> test = new Test<>(1);
+
+        Test<? > test = new Test<>(1);
+        Test<? extends Class> test1 = new Test<>(GerericsTest.class);
+
+        Container<String, Integer> container1 = new Container<>("1", 1);
 
 
+        Container<String, String> container2 = new Container<>("1", "1");
 
+        container1.getK();
+
+        container1.getV();
+        container2.getV();
+
+        test.getData();
+
+        Singleton.getInstance();
 
 
     }
@@ -32,6 +45,14 @@ public class GenericsActivity extends Activity {
 
 
         public Test(T data) {
+            this.data = data;
+        }
+
+        public T getData() {
+            return data;
+        }
+
+        public void setData(T data) {
             this.data = data;
         }
     }
@@ -62,6 +83,45 @@ public class GenericsActivity extends Activity {
         super.onSaveInstanceState(outState);
 
 
+    }
 
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+    }
+
+    public class Container<K, V> {
+        private K k;
+        private V v;
+
+        public Container(K k, V v) {
+            this.k = k;
+            this.v = v;
+        }
+
+        public K getK() {
+            return k;
+        }
+
+        public void setK(K k) {
+            this.k = k;
+        }
+
+        public V getV() {
+            return v;
+        }
+
+        public void setV(V v) {
+            this.v = v;
+        }
+    }
+
+    public interface GernericsInter<T> {
+        /**
+         * 获取数据
+         *
+         * @return
+         */
+        T getData();
     }
 }

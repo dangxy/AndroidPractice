@@ -44,6 +44,8 @@ public class CopyService extends Service {
 
                     CharSequence addedText = manager.getPrimaryClip().getItemAt(0).getText();
 
+
+
                     if (addedText != null) {
                           MLog.e("DANG",addedText.toString());
                     }
