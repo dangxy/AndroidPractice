@@ -9,13 +9,12 @@ import com.dangxy.androidpractice.utils.NetWorkUtils;
 
 import java.io.File;
 import java.io.IOException;
-import java.security.cert.CertificateException;
+import java.security.SecureRandom;
 import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
 
 import okhttp3.Cache;
 import okhttp3.CacheControl;
@@ -60,6 +59,7 @@ public class RetrofitGithub {
                         .setLevel(BuildConfig.DEBUG ?
                                 HttpLoggingInterceptor.Level.BODY : HttpLoggingInterceptor.Level.NONE))
                 .addInterceptor(new LoggingInterceptor())
+                .sslSocketFactory(createSSLSocketFactory())
                 .addNetworkInterceptor(mCacheControlInterceptor).build();
         try {
             MLog.e("DANG", cache.size() + "-99999");
@@ -138,34 +138,18 @@ public class RetrofitGithub {
         }
     }
 
-    public  SSLSocketFactory getSSLSocketFactory() throws Exception {
-        //创建一个不验证证书链的证书信任管理器。
-        final TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager() {
-            @Override
-            public void checkClientTrusted(
-                    java.security.cert.X509Certificate[] chain,
-                    String authType) throws CertificateException {
-            }
+    private static SSLSocketFactory createSSLSocketFactory() {
+        SSLSocketFactory ssfFactory = null;
 
-            @Override
-            public void checkServerTrusted(
-                    java.security.cert.X509Certificate[] chain,
-                    String authType) throws CertificateException {
-            }
+        try {
+            SSLContext sc = SSLContext.getInstance("TLS");
+            sc.init(null, new TrustManager[]{new TrustAllCerts()}, new SecureRandom());
 
-            @Override
-            public java.security.cert.X509Certificate[] getAcceptedIssuers() {
-                return new java.security.cert.X509Certificate[0];
-            }
-        }};
+            ssfFactory = sc.getSocketFactory();
+        } catch (Exception e) {
+        }
 
-        // Install the all-trusting trust manager
-        final SSLContext sslContext = SSLContext.getInstance("TLS");
-        sslContext.init(null, trustAllCerts,
-                new java.security.SecureRandom());
-        // Create an ssl socket factory with our all-trusting manager
-        return sslContext
-                .getSocketFactory();
+        return ssfFactory;
+    }
 
-   }
 }
