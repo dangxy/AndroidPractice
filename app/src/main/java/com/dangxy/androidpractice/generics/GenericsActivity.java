@@ -36,6 +36,8 @@ public class GenericsActivity extends Activity {
         Singleton.getInstance();
 
 
+
+
     }
 
 
