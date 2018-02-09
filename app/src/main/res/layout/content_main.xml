@@ -25,6 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="GANK" />
+
         <Button
             android:id="@+id/Readhub"
             android:layout_width="wrap_content"
@@ -35,7 +36,8 @@
             android:id="@+id/checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="选择"/>
+            android:text="选择" />
+
         <Button
             android:id="@+id/opertaor"
             android:layout_width="wrap_content"
@@ -45,70 +47,91 @@
 
     </LinearLayout>
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-    <Button
-        android:id="@+id/view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="view" />
-    <Button
-        android:id="@+id/view_group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="viewgroup" />
-    <Button
-        android:id="@+id/view_custom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="custom" />
-    <Button
-        android:id="@+id/handler"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="handler" />
-</LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="view" />
+
+        <Button
+            android:id="@+id/view_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="viewgroup" />
+
+        <Button
+            android:id="@+id/view_custom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="custom" />
+
+        <Button
+            android:id="@+id/handler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="handler" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
         <Button
             android:id="@+id/web_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="X5"/>
+            android:text="X5" />
+
         <Button
-        android:id="@+id/coordinatorLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="coordinatorLayout"/>
+            android:id="@+id/coordinatorLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="coordinatorLayout" />
+
         <Button
             android:id="@+id/back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="back"/>
+            android:text="back" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <Button
             android:id="@+id/ormlite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ormlite"/>
+            android:text="ormlite" />
+
         <Button
             android:id="@+id/greendao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="greendao"/>
+            android:text="greendao" />
+
         <Button
             android:id="@+id/copy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="剪切板"/>
+            android:background="?android:attr/selectableItemBackground"
+            android:text="剪切板" />
+
+        <Button
+            android:id="@+id/thread"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:text="Thread" />
 
     </LinearLayout>
 </LinearLayout>

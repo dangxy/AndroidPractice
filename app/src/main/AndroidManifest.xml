@@ -121,7 +121,9 @@
         <service
             android:name=".service.CopyService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
+
+        <activity android:name=".thread.ThreadTestActivity"></activity>
     </application>
 
 </manifest>

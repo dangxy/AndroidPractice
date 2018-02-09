@@ -27,6 +27,7 @@ import com.dangxy.androidpractice.operator.RxOperatorActivity;
 import com.dangxy.androidpractice.ormlite.OrmliteActivity;
 import com.dangxy.androidpractice.readhub.ReadHubActivity;
 import com.dangxy.androidpractice.service.CopyService;
+import com.dangxy.androidpractice.thread.ThreadTestActivity;
 import com.dangxy.androidpractice.utils.MLog;
 import com.dangxy.androidpractice.view.view.ViewActivity;
 import com.dangxy.androidpractice.view.viewgroup.ViewGroupActivity;
@@ -252,7 +253,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @OnClick({R.id.gank, R.id.Readhub, R.id.checkbox, R.id.opertaor, R.id.view, R.id.view_group, R.id.view_custom
-            , R.id.handler, R.id.web_view, R.id.coordinatorLayout, R.id.back, R.id.ormlite, R.id.greendao, R.id.copy})
+            , R.id.handler, R.id.web_view, R.id.coordinatorLayout, R.id.back, R.id.ormlite, R.id.greendao, R.id.copy,R.id.thread})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.gank:
@@ -308,7 +309,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, CopyService.class);
                 startService(intent);
                 break;
-
+            case R.id.thread:
+                intent = new Intent(this, ThreadTestActivity.class);
+                startActivity(intent);
+                break;
             default:
                 break;
         }

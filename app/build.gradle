@@ -19,13 +19,13 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             manifestPlaceholders = [
-                    APP_NAME      : "@string/app_name",
+                    APP_NAME: "@string/app_name",
             ]
         }
-        debug{
+        debug {
             applicationIdSuffix '.debug'
             manifestPlaceholders = [
-                    APP_NAME      : "@string/app_name_debug",
+                    APP_NAME: "@string/app_name_debug",
             ]
         }
     }
