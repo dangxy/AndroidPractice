@@ -19,6 +19,7 @@ import android.widget.FrameLayout;
 import com.dangxy.androidpractice.back.WebActivity;
 import com.dangxy.androidpractice.behavior.SecondScrollingActivity;
 import com.dangxy.androidpractice.custom.CustomViewActivity;
+import com.dangxy.androidpractice.fabric.FabricActivity;
 import com.dangxy.androidpractice.fragment.GankActivity;
 import com.dangxy.androidpractice.fragment.ReadhubFragment;
 import com.dangxy.androidpractice.greendao.GreenDaoActivity;
@@ -34,6 +35,9 @@ import com.dangxy.androidpractice.view.viewgroup.ViewGroupActivity;
 import com.f2prateek.rx.preferences2.Preference;
 import com.f2prateek.rx.preferences2.RxSharedPreferences;
 import com.tbruyelle.rxpermissions2.RxPermissions;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -88,6 +92,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Timer timer = new Timer();
+
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+
+            }
+        };
+
+
         //在Activity中添加fragment
         getSupportFragmentManager().beginTransaction().add(R.id.fl, ReadhubFragment.newInstance(), "readhub").commit();
 
@@ -126,6 +140,10 @@ public class MainActivity extends AppCompatActivity {
                 e.onComplete();
             }
         };
+
+        String str = "str";
+        str.hashCode();
+
         Subscriber<String> subscriber = new Subscriber<String>() {
             @Override
             public void onCompleted() {
@@ -253,13 +271,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @OnClick({R.id.gank, R.id.Readhub, R.id.checkbox, R.id.opertaor, R.id.view, R.id.view_group, R.id.view_custom
-            , R.id.handler, R.id.web_view, R.id.coordinatorLayout, R.id.back, R.id.ormlite, R.id.greendao, R.id.copy,R.id.thread})
+            , R.id.handler, R.id.web_view, R.id.coordinatorLayout, R.id.back, R.id.ormlite, R.id.greendao, R.id.copy, R.id.thread,R.id.fabric})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.gank:
                 intent = new Intent(this, GankActivity.class);
                 startActivity(intent);
-                break;
+
+            break;
             case R.id.Readhub:
                 intent = new Intent(this, ReadHubActivity.class);
                 startActivity(intent);
@@ -311,6 +330,10 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.thread:
                 intent = new Intent(this, ThreadTestActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.fabric:
+                intent = new Intent(this, FabricActivity.class);
                 startActivity(intent);
                 break;
             default:

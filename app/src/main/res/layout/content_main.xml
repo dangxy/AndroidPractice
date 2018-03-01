@@ -129,9 +129,23 @@
             android:id="@+id/thread"
             android:layout_width="80dp"
             android:layout_height="match_parent"
-            android:gravity="center"
             android:layout_marginLeft="10dp"
+            android:gravity="center"
             android:text="Thread" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/fabric"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="fabric" />
+
 
     </LinearLayout>
 </LinearLayout>

@@ -228,7 +228,7 @@ public class PersistentCookieStore implements CookieStore
     }
 
     /**
-     * Using some super basic byte array &lt;-&gt; hex conversions so we don't have to rely on any
+     * Using some super Basic byte array &lt;-&gt; hex conversions so we don't have to rely on any
      * large Base64 libraries. Can be overridden if you like!
      *
      * @param bytes byte array to be converted

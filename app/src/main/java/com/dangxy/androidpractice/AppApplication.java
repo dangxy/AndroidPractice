@@ -3,9 +3,11 @@ package com.dangxy.androidpractice;
 import android.app.Application;
 import android.content.Context;
 
+import com.crashlytics.android.Crashlytics;
 import com.dangxy.androidpractice.greendao.DaoMaster;
 import com.dangxy.androidpractice.greendao.DaoSession;
 
+import io.fabric.sdk.android.Fabric;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
@@ -28,6 +30,7 @@ public class AppApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Fabric.with(this, new Crashlytics());
         mContext = getApplicationContext();
         Realm.init(this);
         RealmConfiguration config = new RealmConfiguration.Builder()

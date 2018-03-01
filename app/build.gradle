@@ -1,4 +1,19 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
 apply plugin: 'realm-android'
 apply plugin: 'org.greenrobot.greendao'
 android {
@@ -83,4 +98,7 @@ dependencies {
     compile 'com.github.liuguangqiang.swipeback:library:1.0.2@aar'
     compile 'com.j256.ormlite:ormlite-android:5.0'
     compile 'org.greenrobot:greendao:3.2.2'
+    compile('com.crashlytics.sdk.android:crashlytics:2.9.1@aar') {
+        transitive = true;
+    }
 }

@@ -464,7 +464,7 @@ public class DiskLruCacheHelper
 	// =======================================
 	// ===遇到文件比较大的，可以直接通过流读写 =====
 	// =======================================
-	// basic editor
+	// Basic editor
 	public DiskLruCache.Editor editor(String key)
 	{
 		try
@@ -487,7 +487,7 @@ public class DiskLruCacheHelper
 	}
 
 	/**
-	 * basic get
+	 * Basic get
 	 */
 	public InputStream get(String key)
 	{
