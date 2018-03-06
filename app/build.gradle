@@ -101,4 +101,7 @@ dependencies {
     compile('com.crashlytics.sdk.android:crashlytics:2.9.1@aar') {
         transitive = true;
     }
+
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    compile project(path: ':vuandroidadsdk')
 }

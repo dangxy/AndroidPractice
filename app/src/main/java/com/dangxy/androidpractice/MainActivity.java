@@ -1,9 +1,11 @@
 package com.dangxy.androidpractice;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Looper;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -15,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.dangxy.androidpractice.back.WebActivity;
 import com.dangxy.androidpractice.behavior.SecondScrollingActivity;
@@ -30,6 +33,7 @@ import com.dangxy.androidpractice.readhub.ReadHubActivity;
 import com.dangxy.androidpractice.service.CopyService;
 import com.dangxy.androidpractice.thread.ThreadTestActivity;
 import com.dangxy.androidpractice.utils.MLog;
+import com.dangxy.androidpractice.video.VideoActivity;
 import com.dangxy.androidpractice.view.view.ViewActivity;
 import com.dangxy.androidpractice.view.viewgroup.ViewGroupActivity;
 import com.f2prateek.rx.preferences2.Preference;
@@ -72,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
     Button Readhub;
     private Intent intent;
     private CheckBox checkbox;
+    private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
         overridePendingTransition(INSTANT_IN, INSTANT_OUT);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        mContext=this;
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         checkbox = (CheckBox) findViewById(R.id.checkbox);
         //setSupportActionBar(toolbar);
@@ -91,6 +97,16 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Looper.prepare();
+                Toast.makeText(mContext,"测试toast",Toast.LENGTH_SHORT).show();
+                Looper.loop();
+
+            }
+        }).start();
 
         Timer timer = new Timer();
 
@@ -271,7 +287,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @OnClick({R.id.gank, R.id.Readhub, R.id.checkbox, R.id.opertaor, R.id.view, R.id.view_group, R.id.view_custom
-            , R.id.handler, R.id.web_view, R.id.coordinatorLayout, R.id.back, R.id.ormlite, R.id.greendao, R.id.copy, R.id.thread,R.id.fabric})
+            , R.id.handler, R.id.web_view, R.id.coordinatorLayout, R.id.back, R.id.ormlite, R.id.greendao, R.id.copy, R.id.thread,R.id.fabric,R.id.video})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.gank:
@@ -334,6 +350,10 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.fabric:
                 intent = new Intent(this, FabricActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.video:
+                intent = new Intent(this, VideoActivity.class);
                 startActivity(intent);
                 break;
             default:

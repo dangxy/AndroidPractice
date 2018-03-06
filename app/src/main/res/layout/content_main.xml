@@ -145,6 +145,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="fabric" />
+        <Button
+            android:id="@+id/video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="video" />
 
 
     </LinearLayout>
